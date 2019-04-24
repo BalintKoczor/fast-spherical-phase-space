@@ -15,7 +15,7 @@ for the manuscript [1]. The scripts ./build.sh and ./build.bat first extract pre
 The source code in ./src contains the following two programs wirtten in C. These are compiled and ran by ./build.sh and ./build.bat.
 
 
-###EfficientCalculation.c
+### EfficientCalculation.c
 
 The function
 
@@ -25,17 +25,17 @@ calculates the Fourier series decomposition of the phase space function F\_{\rho
 
 The example provided in EfficientCalculation.c calculates Fourier decomposition coefficients of Wigner functions W\_{\rho} up to dimension 30 using the kernels initially preculculated by Precalculate\_Kernel.c.
 
-###Precalculate\_Kernel.c
+### Precalculate\_Kernel.c
 
 The function
 
 - complex\* TransformationKernel(complex\* parity, int Ndim) 
 
-calculates the coefficients K\_{\lambda}^{lm} required for calculating the Fourier series representation of phase-space functions by using precalulated parity operators.
+calculates the coefficients K\_{\lambda}^{lm} required for calculating the Fourier series representation of phase-space functions. It takes precalulated parity operators as an argument.
 
 The example provided in Precalculate\_Kernel.c calculates this kernel for Wigner functions (s=0) up to dimension 30 -- using the precalculated parity operators provided by ./Parity.tar.gz up to dimension 120. The resulting precalculated kernels are used by Precalculate\_Kernel.c and by the Mathematica and Matlab examples.
 
 
-###Matlab example
+### Matlab example
 
-###Mathematica examples
+### Mathematica examples
