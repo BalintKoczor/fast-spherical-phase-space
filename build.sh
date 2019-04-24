@@ -1,4 +1,5 @@
 #!/bin/sh
+
 if ! [ -x "$(command -v gcc)" ]; then
   echo 'Error: gcc is not installed.' >&2
   exit 1
