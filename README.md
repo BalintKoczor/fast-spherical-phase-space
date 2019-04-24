@@ -1,12 +1,12 @@
 # fast_spin_phase_space
 
 This repository contains supplementary material
-for the manuscript [1]. The scripts ./build.sh and ./build.bat first extract precalculated files necessary for later calculations, then compile and run the source codes located in ./src. In particular, ./src/Precalculate\_Kernel.c calculates and stores the kernels, i.e., the coefficients K\_{\lambda}^{lm}, which will be required by the Mathematica and Matlab scripts. Alternatively, these kernels are provided as a release and could be directly used for Mathematica and Matlab scripts.
+for the manuscript [1]. The scripts ./build.sh and ./build.bat first extract precalculated files necessary for later calculations, then compile and run the source codes located in ./src. In particular, ./src/Precalculate\_Kernel.c calculates and stores the kernels, i.e., the coefficients K\_{\lambda}^{lm}, which will be required by the Mathematica and Matlab scripts. Alternatively, these kernels are provided as a release for dimensions up to 120 and could be directly used for Mathematica and Matlab scripts.
 
 
 ## Building and testing
-- on UNIX or macOS run ./build.sh -- gcc and tar need to be installed
-- on Windows run ./build.bat -- MinGW needs to be installed which provides both gcc and tar for Windows
+- on UNIX or macOS run  ```./build.sh``` -- gcc and tar need to be installed
+- on Windows run ```./build.bat``` -- MinGW needs to be installed which provides both gcc and tar for Windows
 - if the compilations and calculations were successful, the precalculated kernels should be located in ./Calculated/Kernels.
 
 
@@ -33,9 +33,17 @@ The function
 
 calculates the coefficients K\_{\lambda}^{lm} required for calculating the Fourier series representation of phase-space functions. It takes precalulated parity operators as an argument.
 
-The example provided in Precalculate\_Kernel.c calculates this kernel for Wigner functions (s=0) up to dimension 30 -- using the precalculated parity operators provided by ./Parity.tar.gz up to dimension 120. The resulting precalculated kernels are used by Precalculate\_Kernel.c and by the Mathematica and Matlab examples.
+The example provided in Precalculate\_Kernel.c calculates the kernels for Wigner functions (s=0) up to dimension 30 -- using the precalculated parity operators provided by ./Parity.tar.gz up to dimension 120. The resulting precalculated kernels are used by EfficientCalculation.c and by the Mathematica and Matlab codes.
 
 
 ### Matlab example
+
+A simple example is provided in example.m which calculates the Wigner function
+of a Schroedinger cat spinstate for a given dimension. This program requires the
+precalculated kernels in ./Calculated/Kernels -- these are extracted from
+./Kernels.tar.gz for dimensions up to 30 when running ```./build.sh``` or ```./build.bat```.
+
+Run the example by typing in the command line ```matlab -r "run .\example.m" ``` or in the Matlab
+terminal ```run .\example.m```.
 
 ### Mathematica examples
