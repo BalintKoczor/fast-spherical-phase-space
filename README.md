@@ -1,7 +1,7 @@
 # fast_spin_phase_space
 
 This repository contains supplementary material
-for the manuscript [1]. The scripts ./build.sh and ./build.bat
+for the manuscript [1]. The scripts [./build.sh](/build.sh) and [./build.bat](/build.bat)
 first extract precalculated files necessary for later calculations,
 then compile and run the source codes located in [./src](src).
 In particular, [./src/Precalculate\_Kernel.c](src/Precalculate_Kernel.c) calculates and stores
