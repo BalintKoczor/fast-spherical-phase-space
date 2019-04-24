@@ -1,7 +1,7 @@
 # fast_spin_phase_space
 
 This repository contains supplementary material
-for the manuscript [1]. The scripts ./build.sh and ./build.bat first extract precalculated files necessary for later calculations, then compile and run the source codes located in ./src. In particular, ./src/Precalculate\_Kernel.c calculates and stores the kernels, i.e., the coefficients K\_{\lambda}^{lm}, which will be required by the Mathematica and Matlab scripts. 
+for the manuscript [1]. The scripts ./build.sh and ./build.bat first extract precalculated files necessary for later calculations, then compile and run the source codes located in ./src. In particular, ./src/Precalculate\_Kernel.c calculates and stores the kernels, i.e., the coefficients K\_{\lambda}^{lm}, which will be required by the Mathematica and Matlab scripts. Alternatively, these kernels are provided as a release and could be directly used for Mathematica and Matlab scripts.
 
 
 ## Building and testing
