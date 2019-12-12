@@ -69,4 +69,10 @@ Return@Chop[PSrep/PSrepRef/identityPS];
 ]
 
 
-interpolateDiscreteRepresentation[list_,\[Theta]_,\[Phi]_]:=ListInterpolation[list,{{0,\[Pi]-\[Pi]/(Dimensions@list)[[1]]},{0,2\[Pi]-2\[Pi]/(Dimensions@list)[[1]]}}][\[Theta],\[Phi]];
+interpolateDiscreteRepresentation[list_,\[Theta]_,\[Phi]_]:=Module[{maxth,maxph,dat},
+dat=ConstantArray[0,{Length@list+1,Length@list+1}];
+dat[[1;;Length@list,1;;Length@list]]=list;
+dat[[Length@list+1,;;]]=list[[Length@list,;;]];
+dat[[;;,Length@list+1]]=list[[;;,Length@list]];
+Return[ListInterpolation[list,{{0,\[Pi]},{0,2\[Pi]}}][\[Theta],\[Phi]]];
+]
