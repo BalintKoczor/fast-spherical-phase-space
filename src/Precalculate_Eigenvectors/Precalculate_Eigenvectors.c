@@ -112,7 +112,7 @@ void PrecalculateEigenvec(int Ndim)
 }
 
 int main(){
-    int MAXDIM = 20;
+    int MAXDIM = 120;
     
 	for (int Ndim=2; Ndim<=MAXDIM; Ndim++){
 		PrecalculateEigenvec(Ndim);
