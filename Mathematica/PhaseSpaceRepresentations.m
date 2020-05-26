@@ -35,26 +35,16 @@ fftdim =(Ndim-1)*2+1;
 filename=ToString@StringForm["kernelD``.dat",Ndim];
 filename=FileNameJoin[{path2kernels,filename}];
 aa=Import[filename,"Complex128"];
-Return@ArrayReshape[Reverse@aa,{fftdim,fftdim,Ndim}];
+Return@ArrayReshape[Reverse@aa,{fftdim,Ndim,Ndim}];
 ]
 
 
-PSrepresentationFourierCoeffSYMB[rho_,Kcoeffs_,Ndim_]:=Module[{J},
-J=(Ndim-1)/2;
-Return@Table[
-Sum[rho[[\[Lambda]+J+1,\[Lambda]+m+J+1]]*Kcoeffs[[l+2J+1,m+2J+1,\[Lambda]+J+1]],{\[Lambda],Max[-J-m,-J],Min[J-m,J]}],
-{l,-2J,2J},{m,-2J,2J}];
-]
-
-
-PSrepresentationFourierCoeff=Compile[{{rho,_Complex,2},{KPRC,_Complex,3},{dim,_Integer,0}},Table[
+PSrepresentationFourierCoeff=Compile[{{rho,_Complex,2},{KPRC,_Complex,3},{dim,_Integer,0}},
+Table[
 Sum[
-(*fftdim = 2dim-1*)
-If[(dim-1<=\[Lambda]+m)&&(\[Lambda]+m<(2dim-1)),
-rho[[\[Lambda]+1,\[Lambda]+m-dim+2]]*KPRC[[l+1,m+1,\[Lambda]+1]],
-0.]
-,{\[Lambda],0,dim-1}]
-,{l,0,(2dim-1)-1},{m,0,(2dim-1)-1}]];
+rho[[\[Lambda],\[Lambda]+m-dim]]*KPRC[[l,\[Lambda],\[Lambda]+m-dim]]
+,{\[Lambda],Max[dim-m+1,1],Min[2dim-m,dim]}]
+,{l,1,2dim-1},{m,1,2dim-1}]];
 
 
 PSrepresentationFromFourier[rho_,Kcoeffs_,finalpoints_]:=Module[{fourierCoeffs,fourierCoeffsRef,PSrep,identityPS,PSrepRef,ZeroFill,dim},
