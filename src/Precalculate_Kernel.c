@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <complex.h>
 
-#define TIMING 1
+#define TIMING 0
 #define MAXFILENAME 100
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))

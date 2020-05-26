@@ -10,9 +10,9 @@
 
 #if TIMING == 1
 	#include <time.h>
-    #define MINDIM 4
+    #define MINDIM 2
     #define MAXDIM 120
-    #define STEPDIM 4
+    #define STEPDIM 1
 #else
     #define MINDIM 4
     #define MAXDIM 4
