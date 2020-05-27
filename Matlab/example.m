@@ -9,7 +9,7 @@ Kcoeffs = precalculatedKcoeffs(Ndim);
 %THETA and PHI after the Fourier transformation
 %increasing the number of points results in a
 %smoother plot
-finalpoints = 100;
+finalpoints = 128;
 
 %prepare the deisred density matrix
 %this is a Schroedinger cat state now
