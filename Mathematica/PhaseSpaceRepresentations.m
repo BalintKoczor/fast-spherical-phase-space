@@ -39,12 +39,18 @@ Return@ArrayReshape[Reverse@aa,{fftdim,Ndim,Ndim}];
 ]
 
 
-PSrepresentationFourierCoeff=Compile[{{rho,_Complex,2},{KPRC,_Complex,3},{dim,_Integer,0}},
+(* Compiled version of the same function *)
+(*PSrepresentationFourierCoeff=Compile[{{rho,_Complex,2},{KPRC,_Complex,3},{dim,_Integer,0}},
 Table[
 Sum[
 rho[[\[Lambda],\[Lambda]+m-dim]]*KPRC[[l,\[Lambda],\[Lambda]+m-dim]]
 ,{\[Lambda],Max[dim-m+1,1],Min[2dim-m,dim]}]
-,{l,1,2dim-1},{m,1,2dim-1}]];
+,{l,1,2dim-1},{m,1,2dim-1}]];*)
+
+
+PSrepresentationFourierCoeff[rho_,KPRC_,dim_]:=Table[
+Total[Diagonal[rho*KPRC[[l]],m-dim]]
+,{l,1,2dim-1},{m,1,2dim-1}];
 
 
 PSrepresentationFromFourier[rho_,Kcoeffs_,finalpoints_]:=Module[{fourierCoeffs,fourierCoeffsRef,PSrep,identityPS,PSrepRef,ZeroFill,dim},
