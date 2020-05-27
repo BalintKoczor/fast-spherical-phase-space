@@ -32,7 +32,7 @@ decompCoeffs[[ind]]*SphericalHarmonic[j,m,finalpoints]
 
 precalculatedKcoeffs[Ndim_,path2kernels_]:=Module[{filename,aa,fftdim},
 fftdim =(Ndim-1)*2+1;
-filename=ToString@StringForm["kernelD``.dat",Ndim];
+filename=ToString@StringForm["KernelD``.dat",Ndim];
 filename=FileNameJoin[{path2kernels,filename}];
 aa=Import[filename,"Complex128"];
 Return@ArrayReshape[Reverse@aa,{fftdim,Ndim,Ndim}];
