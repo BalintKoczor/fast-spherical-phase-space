@@ -14,8 +14,8 @@ def PSrepresentationFourierCoeff(rho, Kcoeffs):
     #This is an implementation using the offset trace operation
     #of the element-wise product of matrices
     for l in range(0, fftdim):
+        prod = np.multiply(rho, Kcoeffs[l])
         for m in range(0, fftdim):
-            prod = np.multiply(rho, Kcoeffs[l])
             result[l,m] = np.trace(prod,m-Ndim+1)
     return result
 
