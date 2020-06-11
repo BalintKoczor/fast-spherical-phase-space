@@ -1,3 +1,13 @@
+% import and show the precalculated K matrices from
+%../Calculated/Kernel -- these correspond to the Wigner function
+Ndim = 2; %set the dimension Ndim=2J+1 of the system
+Kcoeffs = precalculatedKcoeffs(Ndim);
+disp(['Example of precalculatedtransofmation matrices for dimession ', num2str(Ndim)])
+for l=1:(2*Ndim-1)
+    disp(['l = ', num2str(l-Ndim)])
+    disp(squeeze(Kcoeffs(l,:,:)))
+end
+
 %set the dimension Ndim=2J+1 of the system
 Ndim = 10;
 %import the precalculated K coefficients

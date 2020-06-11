@@ -3,7 +3,7 @@ import numpy as np
 
 # import and show the precalculated K matrices from
 #../Calculated/Kernel -- these correspond to the Wigner function
-Ndim=2 #set the dimension Ndim=2J+1 of the system
+Ndim = 2 #set the dimension Ndim=2J+1 of the system
 path2kernels = '../Calculated/Kernels/'
 Kcoeffs = ps.precalculatedKcoeffs(Ndim, path2kernels)
 print('Example of precalculated transofmation matrices\nfor dimession', Ndim)
@@ -11,7 +11,7 @@ for l in range(0,2*Ndim-1):
     print('l = ', l-Ndim+1,'\n', Kcoeffs[l],'\n')
     
 # set the dimension dim=2J+1 of the system *)
-Ndim=10
+Ndim = 10
 
 # import the precalculated K coefficients from
 #../Calculated/Kernel -- these correspond to the Wigner function
