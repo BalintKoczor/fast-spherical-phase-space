@@ -84,36 +84,52 @@ for Windows
 should be located in [Calculated/Kernels]().
 
 
-### EfficientCalculation.c
-
-The function
-
-- complex\* EfficientPSrepresentation(int Ndim, complex\* rho, complex\* kernel)
-
-in [src/EfficientCalculation.c](src/EfficientCalculation.c)
-calculates the Fourier series decomposition of the phase space function F\_{\rho}
-representing the density matrix \rho. It requires the precalculated coefficients
-K\_{\lambda}^{lm} as the transformation kernel.
-
-The example provided in [src/EfficientCalculation.c](src/EfficientCalculation.c)
-calculates Fourier decomposition
-coefficients of Wigner functions W\_{\rho} up to dimension 30 using the kernels
-initially preculculated by [src/Precalculate_Kernel.c](src/Precalculate_Kernel.c).
 
 ### Precalculate\_Kernel.c
 
 The function
 
-- complex\* TransformationKernel(complex\* parity, int Ndim) 
+- void PrecalculateKernel(complex\* parity, complex\* u, complex\* ptilde, int Ndim)
 
-in [src/Precalculate_Kernel.c](src/Precalculate_Kernel.c) calculates the
-coefficients K\_{\lambda}^{lm} required for calculating the Fourier series
-representation of phase-space functions. It takes precalulated parity operators as an argument.
+in [src/Precalculate_Kernel.c](src/Precalculate_Kernel.c) calculates and stores the
+kernel coefficients K\_{\lambda}^{lm} required for calculating the Fourier series
+representation of phase-space functions. It requires both precalulated parity operators 
+and eigenvectors of the rotation operator,
+which are provided up to dimension 120 in [Calculated/Parity](Calculated/Parity) and in
+[Calculated/Eigenvectors](Calculated/Eigenvectors).
 
 The example provided in [src/Precalculate_Kernel.c](src/Precalculate_Kernel.c) calculates the
-kernels for Wigner functions (s=0) up to dimension 30 -- using the precalculated parity operators
-provided by [Parity.tar.gz](Parity.tar.gz) up to dimension 120. The resulting precalculated kernels are used by
- [src/EfficientCalculation.c](src/EfficientCalculation.c) and by the Mathematica and Matlab codes.
+kernels for Wigner functions (s=0) up to dimension 120 and stores them in [Calculated/Kernels](Calculated/Kernels).
+These resulting precalculated kernels are used by
+[src/EfficientCalculation.c](src/EfficientCalculation.c) and by the Matlab, Mathematica and Python codes.
+ 
+ 
+### EfficientCalculation.c
+
+The function
+
+- void CalcPSrepresentationL(complex\* rho, complex\* matrL, complex\* PSrepr, complex\* prod, int l, int Ndim)
+
+in [src/EfficientCalculation.c](src/EfficientCalculation.c)
+calculates the Fourier series decomposition of the phase-space function F\_{\rho}
+representing the density matrix \rho for a fixed index l. It requires the precalculated transformation kernel
+as the coefficients K\_{\lambda}^{lm}.
+
+The example provided in [src/EfficientCalculation.c](src/EfficientCalculation.c)
+calculates Fourier decomposition
+coefficients of Wigner functions W\_{\rho} up to dimension 120 using the kernels
+initially preculculated by [src/Precalculate_Kernel.c](src/Precalculate_Kernel.c).
+
+
+## Further source code
+
+We provide further source code for precalculating the following
+for arbitrary large dimensions. Note that these depend on external
+libraries, such as LAPACK, etc.
+
+- computing eigenvectors of the rotation operator via [src/Precalculate_Parity/Precalc_Parity.cpp](src/Precalculate_Parity/Precalc_Parity.cpp)
+- computing tensor operators via [src/Precalculate_Tensor_Operators/Tensor_Operator.cpp](src/Precalculate_Tensor_Operators/Tensor_Operator.cpp)
+- computing parity operators via [src/Precalculate_Parity/Precalc_Parity.cpp](src/Precalculate_Parity/Precalc_Parity.cpp)
 
 
 
