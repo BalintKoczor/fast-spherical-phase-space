@@ -96,7 +96,8 @@ kernel coefficients K\_{\lambda}^{lm} required for calculating the Fourier serie
 representation of phase-space functions. It requires both precalulated parity operators 
 and eigenvectors of the rotation operator,
 which are provided up to dimension 120 in [Calculated/Parity](Calculated/Parity) and in
-[Calculated/Eigenvectors](Calculated/Eigenvectors).
+[Calculated/Eigenvectors](Calculated/Eigenvectors). We furthermore provide these up
+to dimension 500 in the release.
 
 The example provided in [src/Precalculate_Kernel.c](src/Precalculate_Kernel.c) calculates the
 kernels for Wigner functions (s=0) up to dimension 120 and stores them in [Calculated/Kernels](Calculated/Kernels).
@@ -130,6 +131,10 @@ libraries, such as LAPACK, etc.
 - computing eigenvectors of the rotation operator via [src/Precalculate_Eigenvectors/Precalculate_Eigenvectors.c](src/Precalculate_Eigenvectors/Precalculate_Eigenvectors.c)
 - computing tensor operators via [src/Precalculate_Tensor_Operators/Tensor_Operator.cpp](src/Precalculate_Tensor_Operators/Tensor_Operator.cpp)
 - computing parity operators via [src/Precalculate_Parity/Precalc_Parity.cpp](src/Precalculate_Parity/Precalc_Parity.cpp)
+
+#Please reference as
+
+........
 
 
 
