@@ -32,4 +32,6 @@ rho = mtimes(vec,ctranspose(vec));
 psrep = PSrepresentationFromFourier(rho, Kcoeffs, Ndim, finalpoints);
 
 %plot the Wigner function
-surf(real(psrep))
+theta = linspace(0,pi,length(psrep));
+phi = linspace(0,2*pi,length(psrep));
+surf(phi, theta, real(psrep))
