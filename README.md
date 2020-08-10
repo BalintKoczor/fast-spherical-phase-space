@@ -9,7 +9,7 @@ in precalculated kernels and compute phase spaces via Fast Fourier Transforms.
 
 Precalculated kernels are provided in
 [Calculated\Kernels](Calculated\Kernels) up to dimension 30 (up to 29 quibts in a symmetric state).
-Kernels are alseo provided up to dimension 120 (up to 119 qubits in a symmetric state) in the release.
+Kernels are also provided up to dimension 120 (up to 119 qubits in a symmetric state) in the release.
 
 For larger dimensions the scripts [build.sh](build.sh) and [build.bat](build.bat)
 can be used to compile and run the source code located in [src](src), as discussed below.
@@ -23,18 +23,33 @@ the kernels which will be used by the MATLAB, Mathematica and Python scripts.
 ### Matlab example
 
 A simple example is provided in [Matlab/example.m](Matlab/example.m) which calculates the Wigner function
-of a Schrödinger cat state, the well-knwon GHZ state, for a given dimension. This program requires the
-precalculated kernels in [Calculated/Kernels](Calculated/Kernels).
+of a Schrödinger cat state, the well-knwon GHZ state, for a given dimension. This program uses the
+precalculated kernels located in [Calculated/Kernels](Calculated/Kernels). Note that if the desired
+dimension is larger than 30, then the corresponding kernel needs to be downloaded from the release and
+extracted to [Calculated\Kernels](Calculated\Kernels). Alternatively, run the script [build.sh](build.sh)
+or [build.bat](build.bat) to compute the kernels with our C code. 
 
-Run the example by typing in the command line ```matlab -r "run ./Matlab/example.m" ``` or in the Matlab
-terminal ```run ./Matlab/example.m```. Note that if the desired dimension is larger than 30, then 
-the corresponding kernel needs to be downloaded from the release and extracted to [Calculated\Kernels](Calculated\Kernels).
-Alternatively, run the script [build.sh](build.sh) or [build.bat](build.bat) to compute the kernels
-with our C code. 
+Run the example by entering the directory [Matlab/](Matlab/) and
+type in the command line ```matlab -r "run ./Matlab/example.m" ``` or in the Matlab
+terminal ```run ./Matlab/example.m```. This will open a plot of the GHZ state as shown
+below.
+
+
 
 
 
 ### Mathematica example
+
+A simple example as a Mathematica Notebook is provided in [Mathematica/example.nb](Mathematica/example.nb)
+which calculates the Wigner function of a Schrödinger cat state, the well-knwon GHZ state, for a given dimension.
+This program uses the precalculated kernels located in [Calculated/Kernels](Calculated/Kernels). Note that if the desired
+dimension is larger than 30, then the corresponding kernel needs to be downloaded from the release and
+extracted to [Calculated\Kernels](Calculated\Kernels). Alternatively, run the script [build.sh](build.sh)
+or [build.bat](build.bat) to compute the kernels with our C code. 
+
+Run the example by openeing the file [Mathematica/example.nb](Mathematica/example.nb)
+in Mathematica and by selecting "Evaluate Notebook" in the "Evaluation" drop-down menu. 
+
 
 
 ### Python example
