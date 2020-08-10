@@ -30,11 +30,11 @@ extracted to [Calculated\Kernels](Calculated\Kernels). Alternatively, run the sc
 or [build.bat](build.bat) to compute the kernels with our C code. 
 
 Run the example by entering the directory [Matlab/](Matlab/) and
-type in the command line ```matlab -r "run ./Matlab/example.m" ``` or in the Matlab
-terminal ```run ./Matlab/example.m```. This will open a plot of the GHZ state as shown
+type in the command line ```matlab -r "run ./example.m" ``` or in the Matlab
+terminal ```run ./example.m```. This will open a plot of the GHZ state as shown
 below.
 
-
+![GHZ state computed in Matlab](/Matlab/example_plot_D10.png)
 
 
 
@@ -48,25 +48,38 @@ extracted to [Calculated\Kernels](Calculated\Kernels). Alternatively, run the sc
 or [build.bat](build.bat) to compute the kernels with our C code. 
 
 Run the example by openeing the file [Mathematica/example.nb](Mathematica/example.nb)
-in Mathematica and by selecting "Evaluate Notebook" in the "Evaluation" drop-down menu. 
+in Mathematica and by selecting "Evaluate Notebook" in the "Evaluation" drop-down menu.
+This will generate a plot of the GHZ state as shown below.
+
+![GHZ state computed in Mathematica](/Mathematica/example_plot_D10.png)
 
 
 
 ### Python example
 
+A simple example is provided in [Python/example.py](Python/example.py) which calculates the Wigner function
+of a Schrödinger cat state, the well-knwon GHZ state, for a given dimension. This program uses the
+precalculated kernels located in [Calculated/Kernels](Calculated/Kernels). Note that if the desired
+dimension is larger than 30, then the corresponding kernel needs to be downloaded from the release and
+extracted to [Calculated\Kernels](Calculated\Kernels). Alternatively, run the script [build.sh](build.sh)
+or [build.bat](build.bat) to compute the kernels with our C code. 
+
+Run the example by entering the directory [Python/](Python/) and
+type in the command line ```python ./example.py```.
+This will create a plot of the GHZ state and save it in the file
+"plot_D10.png" as shown below.
+
 
 ![GHZ state computed in Python](/Python/example_plot_D10.png)
 
 
-## The source code
+## The C source code
 
 The source code in [src](src) contains the following two programs wirtten in C.
-These are compiled and ran by [build.sh](build.sh) and [build.bat](build.bat).
-
-### Building and testing
-- on UNIX or macOS run  ```./build.sh``` -- gcc and tar need to be installed
-- on Windows run ```./build.bat``` -- MinGW needs to be installed which provides both gcc
-and tar for Windows
+These can be compiled and ran by [build.sh](build.sh) and [build.bat](build.bat).
+- on UNIX or macOS run  ```./build.sh``` -- gcc needs to be installed
+- on Windows run ```./build.bat``` -- MinGW needs to be installed which provides gcc
+for Windows
 - if the compilations and calculations were successful, the precalculated kernels
 should be located in [Calculated/Kernels]().
 
