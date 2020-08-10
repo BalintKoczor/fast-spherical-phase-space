@@ -55,6 +55,9 @@ in Mathematica and by selecting "Evaluate Notebook" in the "Evaluation" drop-dow
 ### Python example
 
 
+![GHZ state computed in Python](/Python/example_plot_D10.png)
+
+
 ## The source code
 
 The source code in [src](src) contains the following two programs wirtten in C.
