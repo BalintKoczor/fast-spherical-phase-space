@@ -127,7 +127,7 @@ We provide further source code for precalculating the following
 for arbitrary large dimensions. Note that these depend on external
 libraries, such as LAPACK, etc.
 
-- computing eigenvectors of the rotation operator via [src/Precalculate_Parity/Precalc_Parity.cpp](src/Precalculate_Parity/Precalc_Parity.cpp)
+- computing eigenvectors of the rotation operator via [src/Precalculate_Eigenvectors/Precalculate_Eigenvectors.c](src/Precalculate_Eigenvectors/Precalculate_Eigenvectors.c)
 - computing tensor operators via [src/Precalculate_Tensor_Operators/Tensor_Operator.cpp](src/Precalculate_Tensor_Operators/Tensor_Operator.cpp)
 - computing parity operators via [src/Precalculate_Parity/Precalc_Parity.cpp](src/Precalculate_Parity/Precalc_Parity.cpp)
 
