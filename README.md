@@ -1,4 +1,4 @@
-# fast_spin_phase_space
+# Fast computation of spherical phase-space functions of quantum many-body states
 
 This repository contains implementations of the efficient computation scheme introduced in
 the manuscript [1]. These can be used to compute phase-space representations of spin systems,
