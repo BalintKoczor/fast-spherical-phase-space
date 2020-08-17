@@ -1,15 +1,16 @@
 # Fast computation of spherical phase-space functions of quantum many-body states
 
-This repository contains implementations of the efficient computation scheme introduced in
-the manuscript [1]. These can be used to compute phase-space representations of spin systems,
+This repository contains code for the efficient computation scheme introduced in
+the manuscript [1]. This code can be used to compute phase-space representations of spin systems,
 such as symmetric qubits states. Using a set of precalculated transformation kernels,
-our approach computes Fourier decompositions of phase spaces and applies Fast Fourier Transforms
-to them. We provide example code in scripting languages MATLAB, Mathematica and Python which read
-in precalculated kernels and compute phase spaces via Fast Fourier Transforms.
+our approach computes Fourier decompositions of phase spaces and applies fast Fourier transforms
+to them. We provide example code in scripting languages MATLAB, Mathematica and Python which reads
+in precalculated kernels and computes phase spaces via fast Fourier transforms.
 
 Precalculated kernels are provided in
-[Calculated\Kernels](Calculated\Kernels) up to dimension 30 (up to 29 quibts in a symmetric state).
-Kernels are also provided up to dimension 120 (up to 119 qubits in a symmetric state) in the release.
+[Calculated\Kernels](Calculated\Kernels) up to dimension 30 (up to 29 qubits in a symmetric state).
+Kernels are also provided up to dimension 120 (up to 119 qubits in a symmetric state) as an 
+additional compressed asset in the release [Kernels_dim120](https://github.com/BalintKoczor/fast-spherical-phase-space/releases/tag/precalculated_kernels).
 
 For larger dimensions the scripts [build.sh](build.sh) and [build.bat](build.bat)
 can be used to compile and run the source code located in [src](src), as discussed below.
@@ -25,8 +26,9 @@ the kernels which will be used by the MATLAB, Mathematica and Python scripts.
 A simple example is provided in [Matlab/example.m](Matlab/example.m) which calculates the Wigner function
 of a Schrödinger cat state, the well-knwon GHZ state, for a given dimension. This program uses the
 precalculated kernels located in [Calculated/Kernels](Calculated/Kernels). Note that if the desired
-dimension is larger than 30, then the corresponding kernel needs to be downloaded from the release and
-extracted to [Calculated\Kernels](Calculated\Kernels). Alternatively, run the script [build.sh](build.sh)
+dimension is larger than 30, then the corresponding kernel needs to be downloaded from the release
+[Kernels_dim120](https://github.com/BalintKoczor/fast-spherical-phase-space/releases/tag/precalculated_kernels)
+and extracted to [Calculated/Kernels](Calculated/Kernels). Alternatively, run the script [build.sh](build.sh)
 or [build.bat](build.bat) to compute the kernels with our C code. 
 
 Run the example by entering the directory [Matlab/](Matlab/) and
@@ -43,8 +45,9 @@ below.
 A simple example as a Mathematica Notebook is provided in [Mathematica/example.nb](Mathematica/example.nb)
 which calculates the Wigner function of a Schrödinger cat state, the well-knwon GHZ state, for a given dimension.
 This program uses the precalculated kernels located in [Calculated/Kernels](Calculated/Kernels). Note that if the desired
-dimension is larger than 30, then the corresponding kernel needs to be downloaded from the release and
-extracted to [Calculated\Kernels](Calculated\Kernels). Alternatively, run the script [build.sh](build.sh)
+dimension is larger than 30, then the corresponding kernel needs to be downloaded from the release 
+[Kernels_dim120](https://github.com/BalintKoczor/fast-spherical-phase-space/releases/tag/precalculated_kernels)
+and extracted to [Calculated/Kernels](Calculated/Kernels). Alternatively, run the script [build.sh](build.sh)
 or [build.bat](build.bat) to compute the kernels with our C code. 
 
 Run the example by openeing the file [Mathematica/example.nb](Mathematica/example.nb)
@@ -60,8 +63,9 @@ This will generate a plot of the GHZ state as shown below.
 A simple example is provided in [Python/example.py](Python/example.py) which calculates the Wigner function
 of a Schrödinger cat state, the well-knwon GHZ state, for a given dimension. This program uses the
 precalculated kernels located in [Calculated/Kernels](Calculated/Kernels). Note that if the desired
-dimension is larger than 30, then the corresponding kernel needs to be downloaded from the release and
-extracted to [Calculated\Kernels](Calculated\Kernels). Alternatively, run the script [build.sh](build.sh)
+dimension is larger than 30, then the corresponding kernel needs to be downloaded from the release 
+[Kernels_dim120](https://github.com/BalintKoczor/fast-spherical-phase-space/releases/tag/precalculated_kernels)
+and extracted to [Calculated/Kernels](Calculated/Kernels). Alternatively, run the script [build.sh](build.sh)
 or [build.bat](build.bat) to compute the kernels with our C code. 
 
 Run the example by entering the directory [Python/](Python/) and
@@ -80,7 +84,8 @@ These can be compiled and ran by [build.sh](build.sh) and [build.bat](build.bat)
 - on UNIX or macOS run  ```./build.sh``` -- gcc needs to be installed
 - on Windows run ```./build.bat``` -- MinGW needs to be installed which provides gcc
 for Windows
-- if the compilations and calculations were successful, the precalculated kernels
+
+After successful compilations and calculations, the precalculated kernels
 should be located in [Calculated/Kernels]().
 
 
@@ -97,7 +102,10 @@ representation of phase-space functions. It requires both precalulated parity op
 and eigenvectors of the rotation operator,
 which are provided up to dimension 120 in [Calculated/Parity](Calculated/Parity) and in
 [Calculated/Eigenvectors](Calculated/Eigenvectors). We furthermore provide these up
-to dimension 500 in the release.
+to dimension 500 in the releases
+[Parity_Op_Dim500](https://github.com/BalintKoczor/fast-spherical-phase-space/releases/tag/Parity)
+and
+[Eigenvectors_dim500](https://github.com/BalintKoczor/fast-spherical-phase-space/releases/tag/Eigenvectors).
 
 The example provided in [src/Precalculate_Kernel.c](src/Precalculate_Kernel.c) calculates the
 kernels for Wigner functions (s=0) up to dimension 120 and stores them in [Calculated/Kernels](Calculated/Kernels).
@@ -134,7 +142,8 @@ libraries, such as LAPACK, etc.
 
 # Please reference as
 
-........
+[1] *Fast computation of spherical phase-space functions of quantum many-body states,*
+Bálint Koczor, Robert Zeier and Steffen J. Glaser (2020) ArXiv preprint, [arXiv:2008.06481](https://arxiv.org/pdf/2008.06481.pdf)
 
 
 
