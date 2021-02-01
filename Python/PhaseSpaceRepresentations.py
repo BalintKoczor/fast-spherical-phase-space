@@ -38,12 +38,12 @@ def PSrepresentationFourierCoeff_LOOP(rho, Kcoeffs):
 def PSrepresentationFromFourier(rho, Kcoeffs, finalpoints):
     Ndim = len(rho)
     fourierCoeffs = PSrepresentationFourierCoeff(rho, Kcoeffs)
-    fourierCoeffsRef = PSrepresentationFourierCoeff(np.identity(Ndim), Kcoeffs)
+    fourierCoeffsRef = PSrepresentationFourierCoeff(np.identity(Ndim)/np.sqrt(Ndim), Kcoeffs)
 
     PSrep = np.fft.ifft2(fourierCoeffs,(2*finalpoints,finalpoints))
     PSrepRef = np.fft.ifft2(fourierCoeffsRef,(2*finalpoints,finalpoints))
     Pi=np.pi
-    identityPS=identityPS=np.sqrt(((Ndim-1)/2)/(2*Pi))*np.sqrt(4*Pi)/np.sqrt(Ndim)
+    identityPS= 1/np.sqrt(Ndim-1)
     result = np.real((PSrep/PSrepRef*identityPS).round(12))
     result = result[0:finalpoints]
     return result
