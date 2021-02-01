@@ -17,12 +17,14 @@ SphericalHarmonic[j_,m_,finalpoints_]:=
 Table[N@SphericalHarmonicY[j,m,th,ph],{th,0,\[Pi]-\[Pi]/finalpoints,\[Pi]/finalpoints},{ph,0,2\[Pi]-2\[Pi]/finalpoints,2\[Pi]/finalpoints}];
 
 
-PSrepresentationFromTensors[rho_,finalpoints_]:=Module[{decompCoeffs,ind,dim},
+PSrepresentationFromTensors[rho_,finalpoints_]:=Module[{R,J,decompCoeffs,ind,dim},
 dim=(Dimensions@rho)[[1]];
 decompCoeffs=tensorDecompositionCoefficients[rho];
 ind=0;
+J=(dim-1)/2;
+R=Sqrt[J/(2\[Pi])];
 Return[
-Sqrt[(2\[Pi])/((dim-1)/2)]*Sum[
+1/R*Sum[
 ind+=1;
 decompCoeffs[[ind]]*SphericalHarmonic[j,m,finalpoints]
 ,{j,0,dim-1},{m,-j,j}]
@@ -53,15 +55,17 @@ Total[Diagonal[rho*KPRC[[l]],m-dim]]
 ,{l,1,2dim-1},{m,1,2dim-1}];*)
 
 
-PSrepresentationFromFourier[rho_,Kcoeffs_,finalpoints_]:=Module[{fourierCoeffs,fourierCoeffsRef,PSrep,identityPS,PSrepRef,ZeroFill,dim},
+PSrepresentationFromFourier[rho_,Kcoeffs_,finalpoints_]:=Module[{R,J,fourierCoeffs,fourierCoeffsRef,PSrep,identityPS,PSrepRef,ZeroFill,dim},
 dim=(Dimensions@rho)[[1]];
 fourierCoeffs=PSrepresentationFourierCoeff[rho,Kcoeffs,dim];
-fourierCoeffsRef=PSrepresentationFourierCoeff[IdentityMatrix[dim],Kcoeffs,dim];
+fourierCoeffsRef=PSrepresentationFourierCoeff[IdentityMatrix[dim]/Sqrt[dim],Kcoeffs,dim];
 ZeroFill[in_,finalpts_]:=PadLeft[in,{2finalpts,finalpts},0.];
 PSrep=Fourier[ZeroFill[fourierCoeffs,finalpoints]][[1;;finalpoints]];
-identityPS=N@Sqrt[((dim-1)/2)/(2\[Pi])]*Sqrt[4\[Pi]]/Sqrt[dim](* *gammafactor *);
+J=(dim-1)/2;
+R=Sqrt[J/(2\[Pi])];
+identityPS=1/Sqrt[2J](* related to gammafactor *);
 PSrepRef=Fourier[ZeroFill[fourierCoeffsRef,finalpoints]][[1;;finalpoints]];
-Return@Chop[PSrep/PSrepRef/identityPS];
+Return@Chop[PSrep/PSrepRef*identityPS];
 ]
 
 
